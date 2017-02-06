@@ -1,0 +1,23 @@
+	<hr />
+	 
+	<table class="table table-striped table-bordered table-condensed">
+		<tr th:each="user : ${users}">
+			<td th:text="${user.id}">100</td>
+			<td th:text="${user.email}">Hong</td>
+			<td th:text="${user.name}">Gil</td>
+			<!-- 
+			<td>
+				<form th:action="@{/users/edit}" method="get">
+					<input type="submit" name="form" value="Edit" />
+					<input type="hidden" name="id" th:value="${customer.id}" />
+				</form>
+			</td>
+			<td>
+				<form th:action="@{/customers/delete}" method="post">
+					<input type="submit" value="delete" />
+					<input type="hidden" name="id" th:value="${customers.id}" />
+				</form>
+			</td>
+			 -->
+		</tr>
+	</table>
