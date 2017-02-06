@@ -1,5 +1,6 @@
 $(document).ready(function(){
-	$('#nav').load("/index/nav.html");
+	$('#nav').load("/web/index/nav.html");
+	$('#body').load("/web/users/usertest.html");
 	$('#check_student').show();
 	$('#check_teacher').hide();
 	$("#form_n_snslink").show();
