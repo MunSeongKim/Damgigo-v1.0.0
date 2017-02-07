@@ -1,5 +1,9 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+    
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
 <head>
 	<meta charset="utf-8"></meta>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
@@ -28,9 +32,14 @@
 		
 </head>
 <body id="page-top" data-spy="scroll" data-target=".navbar-custom">
+	<nav>
+		<jsp:include page="../index/nav.jsp" flush="false" />
+	</nav>
+	<section id="main">
+		<jsp:include page="usertest.jsp" flush="false" />	
+	</section>
 	
-	<div id="nav"></div>
- 	
+	
 	<!-- Core JavaScript Files -->
 	<script src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.2.js" type="text/javascript" charset="utf-8"></script>
 	<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>

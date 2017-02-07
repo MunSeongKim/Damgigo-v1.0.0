@@ -1,11 +1,17 @@
-	<html xmlns:th="http://www.thymeleaf.org">
-	<hr />
-	 
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+<br /><br /><br />
+ 	${users}
+ 	<hr />
 	<table class="table table-striped table-bordered table-condensed">
-		<tr th:each="user : ${users}">
-			<td th:text="${user.id}">100</td>
-			<td th:text="${user.email}">Hong</td>
-			<td th:text="${user.name}">Gil</td>
+	<c:forEach items="${users}" var="user">
+		<tr >
+			<!-- 두가지 방식 모두 내부 속성값에 접근 가능 -->
+			<td>${user.id}</td>
+			<td>${user["email"]}</td>
+			<td>${user["name"]}</td>
 			<!-- 
 			<td>
 				<form th:action="@{/users/edit}" method="get">
@@ -21,5 +27,5 @@
 			</td>
 			 -->
 		</tr>
+	</c:forEach>
 	</table>
-</html>

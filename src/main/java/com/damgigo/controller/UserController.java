@@ -26,7 +26,7 @@ public class UserController {
 	String list(Model model){
 		List<User> users = userService.findAll();
 		model.addAttribute("users", users);
-		return "web/users/user";
+		return "users/user";
 	}
 	
 /*	@RequestMapping(value = "create", method = RequestMethod.POST)

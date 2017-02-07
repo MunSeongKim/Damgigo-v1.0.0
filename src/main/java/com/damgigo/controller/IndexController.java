@@ -8,6 +8,6 @@ import org.springframework.web.bind.annotation.RequestMethod;
 public class IndexController {
 	@RequestMapping(value="/", method=RequestMethod.GET)
 	String redirectIndex(){
-		return "web/index/index";
+		return "index/index";
 	}
 }
