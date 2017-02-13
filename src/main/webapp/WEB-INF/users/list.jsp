@@ -1,5 +1,6 @@
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-    pageEncoding="UTF-8"%>
+<%@ page language="java" contentType="text/html; charset=EUC-KR"
+    pageEncoding="EUC-KR"%>
+<%@ page session="false" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 
 <br /><br /><br />
@@ -8,7 +9,7 @@
 	<table class="table table-striped table-bordered table-condensed">
 	<c:forEach items="${users}" var="user">
 		<tr >
-			<!-- ë‘ê°€ì§€ ë°©ì‹ ëª¨ë‘ ë‚´ë¶€ ì†ì„±ê°’ì— ì ‘ê·¼ ê°€ëŠ¥ -->
+			<!-- µÎ°¡Áö ¹æ½Ä ¸ğµÎ ³»ºÎ ¼Ó¼º°ª¿¡ Á¢±Ù °¡´É -->
 			<td>${user.id}</td>
 			<td>${user["email"]}</td>
 			<td>${user["name"]}</td>

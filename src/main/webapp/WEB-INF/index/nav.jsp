@@ -22,7 +22,7 @@
 							<div class="collapse navbar-collapse" id="menu">
 								<ul class="nav navbar-nav navbar-right">
 									<li class="active"><a href="/">Home</a></li>
-									<li><a href="#">About Us</a></li>
+									<li><a href="/board/list">Board</a></li>
 									<li><a href="#">Services</a></li>
 									<li><a href="#">Works</a></li>
 									<li><a href="#">Contact</a></li>

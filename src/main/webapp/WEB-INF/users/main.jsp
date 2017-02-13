@@ -1,10 +1,11 @@
+<%@ page session="false" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
     
 <!DOCTYPE html>
 <html lang="en">
 <head>
+	<meta http-equiv="Content-Type" content="text/html; charset=EUC-KR">
 	<meta charset="utf-8"></meta>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0"></meta>
 	<meta name="description" content=""></meta>
@@ -36,7 +37,7 @@
 		<jsp:include page="../index/nav.jsp" flush="false" />
 	</nav>
 	<section id="main">
-		<jsp:include page="usertest.jsp" flush="false" />	
+		<jsp:include page="list.jsp" flush="false" />	
 	</section>
 	
 	

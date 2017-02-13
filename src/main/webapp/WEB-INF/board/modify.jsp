@@ -1,16 +1,17 @@
-<%@ page session="false" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
-<!DOCTYPE html>
-<html lang="en">
+<%@ page session="false" %>
 
+<!DOCTYPE html>
+<html>
 <head>
-	<meta charset="utf-8">
+	<meta charset="UTF-8">
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta name="description" content="">
 	<meta name="author" content="">
 
-	<title>Damgigo@SCH</title>
+	<title>Board Testing</title>
 
 	<!-- css -->
 	<link href="/css/bootstrap.min.css" rel="stylesheet" type="text/css">
@@ -23,25 +24,44 @@
 	<link href="/css/animate.css" rel="stylesheet" />
 	<link href="/css/style.css" rel="stylesheet">
 	<link href="/color/default.css" rel="stylesheet">
-<!--	=======================================================
-			Theme Name: Shuffle
-			Theme URL: https://bootstrapmade.com/bootstrap-3-one-page-template-free-shuffle/
-			Author: BootstrapMade
-			Author URL: https://bootstrapmade.com
-		======================================================= -->
-</head>
-<body id="page-top" data-spy="scroll" data-target=".navbar-custom">
 	
+</head>
+
+<body>
 	<nav>
-		<jsp:include page="nav.jsp" flush="false" />
+		<jsp:include page="../index/nav.jsp" flush="false" />
 	</nav>
-	<section id="content">
-		
+	
+	<section id="body">
+		<form role="form" method="post">
+			<div class="box-body">
+				<div class="form-group">
+					<label for="bno">No</label>
+					<input type="text" name="bno" class="form-control" value="${board.bno}" readonly="readonly" />
+				</div>
+				<div class="form-group">
+					<label for="title">Title</label>
+					<input type="text" name="title" class="form-control" value="${board.title}" />
+				</div>
+				<div class="form-group">
+					<label for="content">Content</label>
+					<textarea class="form-control" name="content" rows="3">
+						${board.content}
+					</textarea>
+				</div>
+				<div class="form-group">
+					<label for="writer">Writer</label>
+					<input type="text" name="writer" class="form-control" value="${board.writer}" />
+				</div>
+			</div>
+			<!-- /.box-body -->
+		</form>
+		<div class="box-footer">
+			<button type="submit" class="btn btn-primary">Save</button>
+			<button type="submit" class="btn btn-warning">Cancel</button>
+		</div>
 	</section>
- 	
-	<!-- Core JavaScript Files -->
-	<script src="https://static.nid.naver.com/js/naverLogin_implicit-1.0.2.js" type="text/javascript" charset="utf-8"></script>
-	<script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
+	
 	<script src="/js/jquery.min.js"></script>	 
 	<script src="/js/bootstrap.min.js"></script>
 	<script src="/js/jquery.sticky.js"></script>
@@ -54,12 +74,21 @@
 	<script src="/js/owl.carousel.min.js"></script>
 	<script src="/js/nivo-lightbox.min.js"></script>
 	<script src="/js/custom.js"></script>
-	<script src="/js/event.action.js"></script>
 	<script src="/js/script.js"></script>
-	<script src="/js/facebook.login.js"></script>
-	<script src="/js/kakao.login.js"></script>
-	<script src="/js/naver.login.js"></script>
-	
-	
+	<script>
+		$(document).ready(function(){
+			var formObj = $("form[role='form']");
+			
+			console.log(formObj);
+			
+			$(".btn-warning").click(function(){
+				self.location = "/board/list";
+			});
+						
+			$(".btn-primary").click(function(){
+				formObj.submit();
+			});
+		});
+	</script>
 </body>
 </html>

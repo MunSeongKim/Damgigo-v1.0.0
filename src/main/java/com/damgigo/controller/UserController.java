@@ -26,7 +26,7 @@ public class UserController {
 	String list(Model model){
 		List<User> users = userService.findAll();
 		model.addAttribute("users", users);
-		return "users/user";
+		return "users/main";
 	}
 	
 /*	@RequestMapping(value = "create", method = RequestMethod.POST)
