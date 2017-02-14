@@ -39,7 +39,7 @@
 	<nav>
 		<jsp:include page="../index/nav.jsp" flush="false" />
 	</nav>
-	
+
 	<section id="body">
 		<table class="table table-bordered">
 			<tr>
@@ -50,10 +50,10 @@
 				<th style="width: 40px">COUNT</th>
 			</tr>
 			
-			<c:forEach items="${list}" var="board">
+			<c:forEach items="${list.content}" var="board">
 			<tr>
 				<td>${board.bno}</td>
-				<td><a href='/board/read?bno=${board.bno}'>${board.title}</a></td>
+				<td><a href='/board/read?bno=${board.bno}&page=${list.number}'>${board.title}</a></td>
 				<td>${board.writer}</td>
 				<td><fmt:formatDate pattern="yyyy-MM-dd HH:mm" value="${board.regdate}"/></td>
 				<td><span class="badge bg-red">${board.viewcnt}</span></td>
@@ -61,9 +61,23 @@
 			</c:forEach>
 		</table>
 	</section>
+	<nav>
+  	<ul class="pager">
+  		<c:if test="${!list.first }">
+    	<li class="previous">
+    		<a href="?page=${list.number-1 }"><span aria-hidden="true">&larr;</span> Previous</a>
+    	</li>
+    	</c:if>
+    	<c:if test="${!list.last }">
+    	<li class="next">
+    		<a href="?page=${list.number+1 }">Next <span aria-hidden="true">&rarr;</span></a>
+    	</li>
+    	</c:if>
+	</ul>
+</nav>
 	
 	<section class="box-footer">
-		<a href="/board/register" class="btn btn-primary">Register</a>
+		<a href="/board/register?page=${list.number}" class="btn btn-primary">Register</a>
 	</section>
 </body>
 </html>

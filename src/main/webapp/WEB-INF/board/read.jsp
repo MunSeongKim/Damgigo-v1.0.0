@@ -35,6 +35,7 @@
 	<section id="body">
 		<form role="form" method="post">
 			<input type="hidden" name="bno" value="${board.bno}" />
+			<input type="hidden" name="page" value="${page}" />
 		</form>
 		
 		<div class="box-body">
@@ -79,8 +80,6 @@
 		$(document).ready(function(){
 			var formObj = $("form[role='form']");
 			
-			console.log(formObj);
-			
 			$(".btn-warning").click(function(){
 				formObj.attr("action", "/board/modify");
 				formObj.attr("method", "get");
@@ -93,7 +92,11 @@
 			});
 			
 			$(".btn-primary").click(function(){
-				self.location = "/board/list";
+				formObj.find("[name='bno']").remove();
+				
+				formObj.attr("method", "get");
+				formObj.attr("action", "/board/list");
+				formObj.submit();
 			});
 		});
 	</script>

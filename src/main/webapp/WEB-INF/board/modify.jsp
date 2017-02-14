@@ -34,6 +34,8 @@
 	
 	<section id="body">
 		<form role="form" method="post">
+			<input type="hidden" name="page" value="${page}" />
+			
 			<div class="box-body">
 				<div class="form-group">
 					<label for="bno">No</label>
@@ -79,10 +81,8 @@
 		$(document).ready(function(){
 			var formObj = $("form[role='form']");
 			
-			console.log(formObj);
-			
 			$(".btn-warning").click(function(){
-				self.location = "/board/list";
+				self.location = "/board/read?bno=${board.bno}&page=${page}";
 			});
 						
 			$(".btn-primary").click(function(){
