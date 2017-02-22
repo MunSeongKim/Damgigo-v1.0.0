@@ -32,7 +32,10 @@
 		<jsp:include page="../index/nav.jsp" flush="false" />
 	</nav>
 	
-	<section id="body">
+	<section id="body" class="col-lg-8 col-lg-offset-2">
+		<div class="section-heading text-center">
+			<h2 class="h-bold">BOARD READ PAGE</h2>
+		</div>
 		<form role="form" method="post">
 			<input type="hidden" name="bno" value="${board.bno}" />
 			<input type="hidden" name="page" value="${page}" />
@@ -55,13 +58,13 @@
 			</div>
 		</div>
 		<!-- /.box-body -->
-		
-		<div class="box-footer">
-			<button type="submit" class="btn btn-warning">Modify</button>
-			<button type="submit" class="btn btn-danger">Remove</button>
-			<button type="submit" class="btn btn-primary">List</button>
-		</div>
+	</section>	
+	<section class="box-footer col-lg-8 col-lg-offset-2">
+		<button type="submit" class="btn btn-warning">Modify</button>
+		<button type="submit" class="btn btn-danger">Remove</button>
+		<button type="submit" class="btn btn-primary">List</button>
 	</section>
+	
 	
 	<script src="/js/jquery.min.js"></script>	 
 	<script src="/js/bootstrap.min.js"></script>

@@ -32,7 +32,10 @@
 		<jsp:include page="../index/nav.jsp" flush="false" />
 	</nav>
 	
-	<section id="body">
+	<section id="body" class="col-md-8 col-md-offset-2">
+		<div class="section-heading text-center">
+			<h2 class="h-bold">BOARD MODIFY PAGE</h2>
+		</div>
 		<form role="form" method="post">
 			<input type="hidden" name="page" value="${page}" />
 			

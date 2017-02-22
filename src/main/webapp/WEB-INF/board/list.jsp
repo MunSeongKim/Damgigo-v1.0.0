@@ -40,7 +40,12 @@
 		<jsp:include page="../index/nav.jsp" flush="false" />
 	</nav>
 
-	<section id="body">
+	<section id="body" class="col-lg-8 col-lg-offset-2">
+		<div class="section-heading text-center">
+			<br/>
+			<h2 class="h-bold">BOARD LIST PAGE</h2>
+		</div>
+		<hr />
 		<table class="table table-bordered">
 			<tr>
 				<th style="width: 10px">NO</th>
@@ -60,24 +65,24 @@
 			</tr>
 			</c:forEach>
 		</table>
-	</section>
-	<nav>
-  	<ul class="pager">
-  		<c:if test="${!list.first }">
-    	<li class="previous">
-    		<a href="?page=${list.number-1 }"><span aria-hidden="true">&larr;</span> Previous</a>
-    	</li>
-    	</c:if>
-    	<c:if test="${!list.last }">
-    	<li class="next">
-    		<a href="?page=${list.number+1 }">Next <span aria-hidden="true">&rarr;</span></a>
-    	</li>
-    	</c:if>
-	</ul>
-</nav>
 	
-	<section class="box-footer">
-		<a href="/board/register?page=${list.number}" class="btn btn-primary">Register</a>
+		<nav>
+		  	<ul class="pager">
+		  		<c:if test="${!list.first }">
+		    	<li class="previous">
+		    		<a href="?page=${list.number-1 }"><span aria-hidden="true">&larr;</span> Previous</a>
+		    	</li>
+		    	</c:if>
+		    	<c:if test="${!list.last }">
+		    	<li class="next">
+		    		<a href="?page=${list.number+1 }">Next <span aria-hidden="true">&rarr;</span></a>
+		    	</li>
+		    	</c:if>
+			</ul>
+		</nav>
 	</section>
+	<section class="box-footer col-lg-8 col-lg-offset-2">
+		<a href="/board/register?page=${list.number}" class="btn btn-primary">Register</a>
+	</section>	
 </body>
 </html>

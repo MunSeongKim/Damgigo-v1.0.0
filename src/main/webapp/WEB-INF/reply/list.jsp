@@ -23,41 +23,61 @@
 	<link href="/css/animate.css" rel="stylesheet" />
 	<link href="/css/style.css" rel="stylesheet">
 	<link href="/color/default.css" rel="stylesheet">
+	
+	<style>
+		#modDiv {
+			width: 300px;
+			height: 100px;
+			background-color: gray;
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			margin-top: -50px;
+			margin-left: -150px;
+			padding: 10px;
+			z-index: 1000;
+		}
+	</style>
 </head>
 
 <body>
 	<nav>
 		<jsp:include page="../index/nav.jsp" flush="false" />
 	</nav>
-	
-	<section id="body" class="col-md-8 col-md-offset-2">
-		<div class="section-heading text-center">
-			<h2 class="h-bold">BOARD REGISTER</h2>
+
+	<section id="body">
+		<div>
+			<div>
+				REPLYER <input type="text" name="replyer" id="newReplyer" />
+			</div>
+			<div>
+				REPLY TEXT <input type="text" name="replytext" id="newReplytext" />
+			</div>
+			<button id="replyAddBtn">ADD REPLY</button>
 		</div>
-		<form role="form" method="post">	
-			<input type="hidden" name="page" value="${page}" />
-			<div class="box-body">
-				<div class="form-group">
-					<label for="title">Title</label>
-					<input type="text" name="title" class="form-control" placeholder="Enter Title" />
-				</div>
-				<div class="form-group">
-					<label for="content">Content</label>
-					<textarea class="form-control" name="content" rows="3" placeholder="Enter ..."></textarea>
-				</div>
-				<div class="form-group">
-					<label for="writer">Writer</label>
-					<input type="text" name="writer" class="form-control" placeholder="Enter Writer" />
-				</div>
-			</div>
-			<!-- /.box-body -->
-		</form>
-			
-			<div class="box-footer">
-				<button type="submit" class="btn btn-primary">Submit</button>
-				<button type="submit" class="btn btn-warning">Cancel</button>
-			</div>
+		<hr />
+		<ul id="replies">
+		</ul>
 	</section>
+
+	<nav>
+	  	<ul class="pager">
+		</ul>
+	</nav>	
+
+	<div id="modDiv" style="display:none;">
+		<div class="modal-title"></div>
+		<div>
+			<input type="text" id="replytext" />
+		</div>
+		<div>
+			<button type="button" id="replyModBtn">Modify</button>
+			<button type="button" id="replyDelBtn">Delete</button>
+			<button type="button" id="closeBtn">Close</button>
+		</div>
+	</div>
+	
+
 	
 	<script src="/js/jquery.min.js"></script>	 
 	<script src="/js/bootstrap.min.js"></script>
@@ -72,18 +92,7 @@
 	<script src="/js/nivo-lightbox.min.js"></script>
 	<script src="/js/custom.js"></script>
 	<script src="/js/script.js"></script>
-	<script>
-		$(document).ready(function(){
-			var formObj = $("form[role='form']");
-			
-			$(".btn-warning").click(function(){
-				 self.location = "/board/list?page=${page}";
-			});
-						
-			$(".btn-primary").click(function(){
-				formObj.submit();
-			});
-		});
-	</script>
+	<script src="/js/event.reply.js"></script>
+	
 </body>
 </html>
