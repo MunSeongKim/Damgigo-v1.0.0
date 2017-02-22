@@ -82,7 +82,7 @@
 		</nav>
 	</section>
 	<section class="box-footer col-lg-8 col-lg-offset-2">
-		<a href="/board/register?page=${list.number}" class="btn btn-primary">Register</a>
-	</section>	
+			<a href="/board/register?page=${list.number}" class="btn btn-primary">Register</a>
+	</section>
 </body>
 </html>

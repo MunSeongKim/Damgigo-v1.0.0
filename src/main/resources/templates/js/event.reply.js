@@ -1,6 +1,10 @@
-var bno = 123;
+var bno = $('input[name="bno"]').val();
 
-function getAllList(){
+//외부 스크립트를 JQuery로 호출하는 부분
+//콜백으로 해당 스크립트 소스가 전달되어 사용됨. --> 익명함수를 변수에 담아 사용하는법 확인할것 꼭!!!
+$.getScript("/js/handlebars.extend.js", function() {
+
+getAllList = function(){
 	var str = "";
 	$.getJSON("/replies/all/" + bno, function(data){
 		console.log(data.length);
@@ -15,13 +19,16 @@ function getAllList(){
 	});
 }
 
-function getPageList(page){
+getPageList = function(page){
 	
 	$.getJSON("/replies/" + bno + "/" + page, function(data){
 		console.log(data.size);
 		
 		var str = "";
 		
+		printData(data.content, $("#wallmessages"), $("#timelineReply"));
+		
+		/*
 		$(data.content).each(function(){
 			str += "<li data-rno='" + this.rno + "' class='replyLi'>"
 				+ this.rno + ":" + this.replytext +
@@ -44,9 +51,10 @@ function getPageList(page){
 			"</li>"
 		}
 		
-		$(".pager").html(str);
+		$(".pager").html(str);*/
 	});
 }
+
 
 $(document).ready(function(){
 	getPageList(0);
@@ -147,4 +155,6 @@ $(document).ready(function(){
 		replyPage = $(this).attr("href");
 		getPageList(replyPage);
 	});
+});
+
 });

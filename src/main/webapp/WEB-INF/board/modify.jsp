@@ -32,7 +32,7 @@
 		<jsp:include page="../index/nav.jsp" flush="false" />
 	</nav>
 	
-	<section id="body" class="col-md-8 col-md-offset-2">
+	<section id="body" class="col-lg-8 col-lg-offset-2">
 		<div class="section-heading text-center">
 			<h2 class="h-bold">BOARD MODIFY PAGE</h2>
 		</div>
@@ -61,10 +61,10 @@
 			</div>
 			<!-- /.box-body -->
 		</form>
-		<div class="box-footer">
+	</section>
+	<section class="box-footer col-lg-8 col-lg-offset-2">
 			<button type="submit" class="btn btn-primary">Save</button>
 			<button type="submit" class="btn btn-warning">Cancel</button>
-		</div>
 	</section>
 	
 	<script src="/js/jquery.min.js"></script>	 
