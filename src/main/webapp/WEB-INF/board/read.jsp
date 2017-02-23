@@ -93,7 +93,8 @@
 	
 	<section id="replyTimeline" class="col-lg-8 col-lg-offset-2">
 		<div class="row">
-			<p class="lead marginbot-10 margintop-30">Replies List</p>
+			<p class="lead marginbot-10 margintop-30">Replies List 
+				<span><a class="btn-link" id="replyShow"><i class="fa fa-comments" aria-hidden="true"></i><small> show replies</small></a></span></p> 
 		
 		    <div class="qa-message-list" id="wallmessages">
 				<!-- Timeline item -->
@@ -126,6 +127,10 @@
 				</script>
 				<!-- /.Timeline item end -->
 			</div>
+			<nav>
+			  	<ul class="pager">
+				</ul>
+			</nav>	
 		</div>
 	</section>		
 	

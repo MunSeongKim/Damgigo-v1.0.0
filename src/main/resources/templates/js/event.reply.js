@@ -24,40 +24,39 @@ getPageList = function(page){
 	$.getJSON("/replies/" + bno + "/" + page, function(data){
 		console.log(data.size);
 		
-		var str = "";
-		
 		printData(data.content, $("#wallmessages"), $("#timelineReply"));
 		
-		/*
-		$(data.content).each(function(){
-			str += "<li data-rno='" + this.rno + "' class='replyLi'>"
-				+ this.rno + ":" + this.replytext +
-				"<button>MOD</button></li>";
-		});
-		
-		$("#replies").html(str);
-		
-		str = "";
+		var str = "";
 		//pager 출력 부분
+		/*
 		if(!data.first){
 			str += "<li class='previous'>" +
 				"<a href='" + (Number(data.number)-1) + "'><span aria-hidden='true'>&larr;</span> Previous</a>" +
 				"</li>"
 		}
-		
+		*/
 		if(!data.last){
 			str += "<li class='next'>" +
 			"<a href='" + (Number(data.number)+1) + "'>Next <span aria-hidden='true'>&rarr;</span></a>" +
 			"</li>"
 		}
 		
-		$(".pager").html(str);*/
+		$(".pager").html(str);
 	});
 }
 
 
 $(document).ready(function(){
-	getPageList(0);
+	//getPageList(0);
+	$("#replyShow").click(function(){
+		if($(".message-item").size() > 1){
+			return;
+		} else {
+			getPageList(0);
+			$(this).hide();
+		}
+	});
+	
 	
 	$("#replyAddBtn").click(function(){
 		var replyer = $("#newReplyer").val();
