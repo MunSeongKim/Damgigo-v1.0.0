@@ -65,7 +65,7 @@
 		</ul>
 	</nav>	
 
-	<div id="modDiv" style="display:none;">
+	<div id="modifyModal" class="modal modal-primary fade" role="dialog">
 		<div class="modal-title"></div>
 		<div>
 			<input type="text" id="replytext" />

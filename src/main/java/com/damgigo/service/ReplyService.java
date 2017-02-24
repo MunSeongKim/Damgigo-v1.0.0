@@ -39,7 +39,7 @@ public class ReplyService {
 		return replyRepository.findOne(rno);
 	}
 	
-	public Page<Reply> findAllByPage(Pageable pageable){
-		return replyRepository.findAll(pageable);
+	public Page<Reply> findAllByPage(Integer bno, Pageable pageable){
+		return replyRepository.findAllByBno(bno, pageable);
 	}
 }

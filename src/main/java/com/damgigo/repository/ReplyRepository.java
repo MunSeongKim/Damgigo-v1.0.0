@@ -10,5 +10,5 @@ import com.damgigo.domain.Reply;
 
 public interface ReplyRepository extends JpaRepository<Reply, Integer> {
 	public List<Reply> findAllByBno(Integer bno);
-	public Page<Reply> findAll(Pageable pageable);
+	public Page<Reply> findAllByBno(Integer bno, Pageable pageable);
 }

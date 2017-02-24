@@ -1,53 +1,27 @@
 var bno = $('input[name="bno"]').val();
 
 //외부 스크립트를 JQuery로 호출하는 부분
-//콜백으로 해당 스크립트 소스가 전달되어 사용됨. --> 익명함수를 변수에 담아 사용하는법 확인할것 꼭!!!
+//콜백으로 해당 스크립트 소스가 전달되어 사용됨.
 $.getScript("/js/handlebars.extend.js", function() {
-
-getAllList = function(){
-	var str = "";
-	$.getJSON("/replies/all/" + bno, function(data){
-		console.log(data.length);
-		
-		$(data).each(function(){
-			str += "<li data-rno='" + this.rno + "' class='replyLi'>"
-				+ this.rno + ":" + this.replytext
-				+ "<button>MOD</button></li>" ;
-		});
-		
-		$("#replies").html(str);
-	});
-}
-
-getPageList = function(page){
-	
-	$.getJSON("/replies/" + bno + "/" + page, function(data){
-		console.log(data.size);
-		
-		printData(data.content, $("#wallmessages"), $("#timelineReply"));
-		
-		var str = "";
-		//pager 출력 부분
-		/*
-		if(!data.first){
-			str += "<li class='previous'>" +
-				"<a href='" + (Number(data.number)-1) + "'><span aria-hidden='true'>&larr;</span> Previous</a>" +
+	getPageList = function(page){
+		$.getJSON("/replies/" + bno + "/" + page, function(data){
+			console.log(data.size);
+			
+			printData(data.content, $("#wallmessages"), $("#timelineReply"));
+			
+			if(!data.last){
+				var str = "<li class='next'>" +
+				"<a href='" + (Number(data.number)+1) + "'>Next <span aria-hidden='true'>&rarr;</span></a>" +
 				"</li>"
-		}
-		*/
-		if(!data.last){
-			str += "<li class='next'>" +
-			"<a href='" + (Number(data.number)+1) + "'>Next <span aria-hidden='true'>&rarr;</span></a>" +
-			"</li>"
-		}
-		
-		$(".pager").html(str);
-	});
-}
+			}
+			
+			$(".pager").html(str);
+		});
+	}	
+});
 
-
+/* Function based on event */
 $(document).ready(function(){
-	//getPageList(0);
 	$("#replyShow").click(function(){
 		if($(".message-item").size() > 1){
 			return;
@@ -57,10 +31,16 @@ $(document).ready(function(){
 		}
 	});
 	
+	$(".pager").on("click", "li a", function(event){
+		event.preventDefault();
+		
+		replyPage = $(this).attr("href");
+		getPageList(replyPage);
+	});
 	
 	$("#replyAddBtn").click(function(){
 		var replyer = $("#newReplyer").val();
-		var replytext = $("#newReplytext").val();
+		var replytext = $("#newReplyText").val();
 		
 		$.ajax({
 			type: 'POST',
@@ -78,32 +58,27 @@ $(document).ready(function(){
 			success: function(result){
 				if(result == 'SUCCESS'){
 					alert("등록 되었습니다.");
-					getAllList();
+					$("#newReplyer").val("");
+					$("#newReplyText").val("");
+
+					$("#replyShow").hide();
+				
+					$(".message-item").remove();
+					getPageList(0);
 				}
 			}
 		});
 	});
 	
-	$("#replies").on("click", ".replyLi button", function(){
-		var reply = $(this).parent();
+	$(".qa-message-list").on("click", ".modifyMainBtn", function(event){
+		var reply = $(this).closest(".message-item");
 		
-		var rno = reply.attr("data-rno");
-		var replytext = reply.text().split(":");
-		
-		$(".modal-title").html(rno);
-		$("#replytext").val(replytext[1].replace(/MOD/gi, ""));
-		$("#modDiv").show("slow");
-	});
-	
-	$("#closeBtn").click(function(){
-		$(".model-title").html("");
-		$("#replytext").val("");
-		$("#modDiv").hide("slow");
+		$("#replytext").val(reply.find(".qa-message-content").text());
+		$(".modal-title").html(reply.attr("data-rno"));
 	});
 	
 	$("#replyDelBtn").click(function(){
 		var rno = $(".modal-title").html();
-		var replytext = $("#replytext").val();
 		
 		$.ajax({
 			type: "DELETE",
@@ -117,8 +92,9 @@ $(document).ready(function(){
 				console.log("result: " + result);
 				if( result == "SUCCESS" ){
 					alert("삭제되었습니다.");
-					$("#modDiv").hide("slow");
-					getAllList();
+					$(".message-item").remove();
+					getPageList(0);
+					$("#modifyModal").modal("hide");
 				}
 			}
 		});
@@ -141,19 +117,13 @@ $(document).ready(function(){
 				console.log("result: " + result);
 				if( result == "SUCCESS" ){
 					alert("수정되었습니다.");
-					$("#modDiv").hide("slow");
-					getAllList();
+					$(".message-item").remove();
+					getPageList(0);
+					$("#modifyModal").modal("hide");
 				}
 			}
 		});
 	});
 	
-	$(".pager").on("click", "li a", function(event){
-		event.preventDefault();
-		
-		replyPage = $(this).attr("href");
-		getPageList(replyPage);
-	});
-});
-
+	
 });

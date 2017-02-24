@@ -1,8 +1,6 @@
-var printData;
 //외부 스크립트를 JQuery로 호출하는 부분
-//콜백으로 해당 스크립트 소스가 전달되어 사용됨. --> 익명함수를 변수에 담아 사용하는법 확인할것 꼭!!!
+//콜백으로 해당 스크립트 소스가 전달되어 사용됨.
 $.getScript("/js/handlebars.js", function() {
-
 	Handlebars.registerHelper("prettifyDate", function(timeValue){
 		var dateObj = new Date(timeValue);
 		var year = dateObj.getFullYear();

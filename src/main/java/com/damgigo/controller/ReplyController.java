@@ -94,7 +94,7 @@ public class ReplyController {
 		ResponseEntity<Page<Reply>> entity = null;
 		
 		try {
-			Page<Reply> listPage = service.findAllByPage(paging);
+			Page<Reply> listPage = service.findAllByPage(bno, paging);
 			entity = new ResponseEntity<Page<Reply>>(listPage, HttpStatus.OK);
 		} catch(Exception e){
 			e.printStackTrace();

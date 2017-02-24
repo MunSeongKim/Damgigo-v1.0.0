@@ -35,7 +35,7 @@
 	
 	<section id="boardRead" class="col-lg-8 col-lg-offset-2">
 		<div class="row">
-			<div class="box-header section-heading text-center">
+			<div class="box-header section-heading text-center margintop-20">
 				<h2 class="h-bold">BOARD READ PAGE</h2>
 			</div>
 			
@@ -62,9 +62,9 @@
 			</div>
 			<!-- /.box-body -->
 			<div class="box-footer">
-				<button type="submit" class="btn btn-warning">Modify</button>
-				<button type="submit" class="btn btn-danger">Remove</button>
-				<button type="submit" class="btn btn-primary">List</button>
+				<button type="submit" class="btn btn-warning" id="modifyBoard">Modify</button>
+				<button type="submit" class="btn btn-danger" id="removeBoard">Remove</button>
+				<button type="submit" class="btn btn-primary" id="goList">List</button>
 			</div>
 		</div>
 	</section>
@@ -117,9 +117,10 @@
 						</div>
 						<div class="qa-message-content">
 							{{replytext}}
-							<div class="message-modify">
-								<a class="btn btn-primary btn-xs" data-toggle"modal" data-target="#modifyModal">Modify</a>
-							</div>
+							
+						</div>
+						<div class="message-modify margintop-10">
+							<button class="btn btn-primary btn-xs modifyMainBtn" data-toggle="modal" data-target="#modifyModal">Modify</button>
 						</div>
 					</div>
 				</div>
@@ -127,12 +128,33 @@
 				</script>
 				<!-- /.Timeline item end -->
 			</div>
-			<nav>
-			  	<ul class="pager">
-				</ul>
-			</nav>	
 		</div>
-	</section>		
+		<nav class="text-center">
+		  	<ul class="pager">
+			</ul>
+		</nav>
+	</section>
+	
+	<!--  Modal -->
+	<div id="modifyModal" class="modal modal-primary fade margintop-100" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		<div class="modal-dialog">
+			<!--  Modal content -->
+			<div class="modal-content">
+				<div class="modal-header">
+					<button type="button" class="close" data-dismiss="modal">&times;</button>
+					<h4 class="modal-title"></h4>
+				</div>
+				<div class="modal-body" data-rno>
+					<p><input type="text" id="replytext" class="form-control"/></p>
+				</div>
+				<div class="modal-footer">
+					<button type="button" class="btn btn-info" id="replyModBtn">Modify</button>
+					<button type="button" class="btn btn-danger" id="replyDelBtn">Delete</button>
+					<button type="button" class="btn-link" data-dismiss="modal">Close</button>
+				</div>
+			</div>
+		</div>
+	</div>
 	
 	<script src="/js/jquery.min.js"></script>	 
 	<script src="/js/bootstrap.min.js"></script>
@@ -154,18 +176,18 @@
 		$(document).ready(function(){
 			var formObj = $("form[role='form']");
 			
-			$(".btn-warning").click(function(){
+			$("#modifyBoard").click(function(){
 				formObj.attr("action", "/board/modify");
 				formObj.attr("method", "get");
 				formObj.submit();
 			});
 			
-			$(".btn-danger").click(function(){
+			$("#removeBoard").click(function(){
 				formObj.attr("action", "/board/remove");
 				formObj.submit();
 			});
 			
-			$(".btn-primary").click(function(){
+			$("#goList").click(function(){
 				formObj.find("[name='bno']").remove();
 				
 				formObj.attr("method", "get");

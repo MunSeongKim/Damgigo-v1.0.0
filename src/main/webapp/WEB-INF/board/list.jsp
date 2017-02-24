@@ -41,7 +41,7 @@
 	</nav>
 
 	<section id="body" class="col-lg-8 col-lg-offset-2">
-		<div class="section-heading text-center">
+		<div class="section-heading text-center margintop-20">
 			<br/>
 			<h2 class="h-bold">BOARD LIST PAGE</h2>
 		</div>
