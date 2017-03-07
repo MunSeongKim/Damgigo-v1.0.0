@@ -6,7 +6,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.damgigo.domain.User;
+import com.damgigo.domain.User_test;
 import com.damgigo.repository.UserRepository;
 
 @Service
@@ -15,23 +15,23 @@ public class UserService {
 	@Autowired
 	UserRepository userRepository;
 	
-	public List<User> findAll() {
+	public List<User_test> findAll() {
 		return userRepository.findAll();
 	}
 	
-	public User findOneByEmail(String email){
+	public User_test findOneByEmail(String email){
 		return userRepository.findByEmail(email);
 	}
 	
-	public User findOneByName(String name){
+	public User_test findOneByName(String name){
 		return userRepository.findByName(name);
 	}
 	
-	public User create(User user){
+	public User_test create(User_test user){
 		return userRepository.save(user);
 	}
 	
-	public User update(User user){
+	public User_test update(User_test user){
 		return userRepository.save(user);
 	}
 	

@@ -10,11 +10,11 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name="user")
+@Table(name="")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class User {
+public class User_test {
 	@Id
 	private String id;
 	@Column(nullable=true)

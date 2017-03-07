@@ -8,7 +8,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import com.damgigo.domain.User;
+import com.damgigo.domain.User_test;
 import com.damgigo.service.UserService;
 
 @Controller
@@ -24,7 +24,7 @@ public class UserController {
 	
 	@RequestMapping(method = RequestMethod.GET)
 	String list(Model model){
-		List<User> users = userService.findAll();
+		List<User_test> users = userService.findAll();
 		model.addAttribute("users", users);
 		return "users/main";
 	}
