@@ -14,22 +14,22 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name="board") 
+@Table(name="tbl_message")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-public class Board {
+public class Message {
 	@Id
 	@GeneratedValue(strategy=GenerationType.AUTO)
-	private Integer bno;
+	private Integer mid;
 	@Column(nullable=false)
-	private String title;
-	@Column(nullable=true)
-	private String content;
+	private String targetid;
 	@Column(nullable=false)
-	private String writer;
+	private String sender;
 	@Column(nullable=false)
-	private Date regdate;
+	private String message;
 	@Column(nullable=false)
-	private int viewcnt;
+	private Date opendate;
+	@Column(nullable=false)
+	private Date senddate;
 }
